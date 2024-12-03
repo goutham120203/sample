@@ -3,13 +3,28 @@ import React from 'react';
 import './App.css'
 
 const App = () => {
-  const arr = ["java", "react", "springboot", "mongo"];
+  const arr = [
+  {
+    id:1,
+    title:"java"
+  }, 
+  {
+    id:2,
+    title:"react"
+  }, 
+  {id:3,
+    title:"springboot"
+  }, 
+  {
+    id:4,
+    title:"mongo"
+  }];
   return (
     <div>
       <ul>
         {
           arr.map(
-            (value,index) => <li key={index}>{value}</li>
+            (value,index) => <li key={value.id}>{value.title}</li>
           )
         }
       </ul>
