@@ -1,36 +1,21 @@
 
-import React,{useState} from 'react';
-import './App.css';
+import React from 'react';
+import './App.css'
 
 const App = () => {
-const [data,setData] = useState({
-  username:'',
-  password:''
-});
-const {username,password} = data;
-const onChange = e =>{
-  setData({...data,[e.target.name]:[e.target.value]})
-}
-const submitHandler = e =>{
-  e.preventDefault();
-  console.log(data);
-}
-
+  const arr = ["java", "react", "springboot", "mongo"];
   return (
     <div>
-      <center>
-      <form onSubmit={submitHandler}>
-        <input type='text' name='username' value={username}  
-        onChange={onChange} placeholder='Username'/><br />
-
-        <input type='password' name='password' value={password}
-        onChange={onChange} placeholder='password' /><br />
-
-        <input type='submit' name='submit' />
-        </form>
-      </center>
+      <ul>
+        {
+          arr.map(
+            (value,index) => <li key={index}>{value}</li>
+          )
+        }
+      </ul>
     </div>
-  )
-}
+  );
+};
 
 export default App;
+
