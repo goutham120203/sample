@@ -1,15 +1,19 @@
 
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import './App.css';
 
 const App = () => {
-const [count,setCount] = useState(0);
-useEffect(() => console.log(count),[count])
+const [user,setUser] = useState("");
+const handler = e =>{
+  setUser(e.target.value)
+}
 
   return (
     <div>
-      <p>{count}</p> <br />
-      <button onClick={() => setCount(count + 1)}>click Here</button>
+      <center>
+        <input type='text' placeholder='username' value={user} name='user' onChange={handler}/> <br />
+        {user}
+      </center>
     </div>
   )
 }
