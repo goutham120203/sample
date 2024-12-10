@@ -14,11 +14,14 @@ const App = () => {
   }
   const submitHandler = e =>{
     e.preventDefault()
-    if(password === confirmpassword){
-    console.log(data);
+    if(username.length <= 5){
+      alert("username must be at least 5 characters");
+    }
+    else if(password !== confirmpassword){
+      alert("password is not matching");
     }
     else{
-      console.log("confirmpassword is not matching");
+      console.log(data)
     }
   }
   return (
@@ -29,6 +32,7 @@ const App = () => {
           <input type='text' name='email' value={email} placeholder="Email" onChange={changeHandler} /> <br />
           <input type='password' name='password' value={password} placeholder="Password" onChange={changeHandler} /> <br />
           <input type='password' name='confirmpassword' value={confirmpassword} placeholder="confirmpassword" onChange={changeHandler} /> <br />
+          {password !== confirmpassword ? <p>password are not matching</p>:null}
           <input type='submit' name='submit' />
         </form>
       </center>
