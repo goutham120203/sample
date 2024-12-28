@@ -1,17 +1,22 @@
-import React, { useEffect,useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import NavBar from './components/NavBar';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import About from './components/About';
+import Dashboard from './components/Dashboard';
 import './App.css';
 
 const App = () => {
-  const [data,setData] = useState([])
-  useEffect(() => {
-    axios.get('https://jsonplaceholder.typicode.com/todos').then(
-      reponse => setData(reponse.data)
-    )
-  },[])
   return (
     <div>
-      {data.map(item => <li key={item.id}>{item.title}</li> )}
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };
