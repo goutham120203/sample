@@ -1,24 +1,23 @@
-import React from 'react';
-import NavBar from './components/NavBar';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import About from './components/About';
-import Dashboard from './components/Dashboard';
-import './App.css';
+import User from "./User";
 
-const App = () => {
-  return (
+function App(){
+
+  const users = [{id:'21', name:'goutham', Age:'23'},
+    {id:'22', name:'ganesh', Age:'24'},
+    {id:'24', name:'sandeep', Age:'25'},
+    {id:'25', name:'manoj', Age:'23'}
+  ];
+  return(
     <div>
-      <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-      </BrowserRouter>
+      {
+        [
+          users.map((user)=>{
+           return <User key={user.id}id={user.id} name={user.name} Age = {user.Age}/>
+          })
+        ]
+      }  
     </div>
   );
-};
+}
 
-export default App;
+export default App
