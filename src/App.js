@@ -1,27 +1,13 @@
-import React from "react";
+import React,{useState} from "react";
 
-class App extends React.Component{
-  
-  state={
-    counter : 0
-  }
-  render(){
-    return(
-      <>
 
-        <h1>Counter:{this.state.counter}</h1>
-        <button onClick={()=>{
-          this.setState({
-            counter:this.state.counter+1
-          })
-        }}>change</button>
-
-      </>
-    )
-  }
-
+function App(){
+let [count, setCount]=useState(0);
+return(
+  <>
+    <h1>Count:{count}</h1>
+    <button onClick={()=>{setCount(++count)}}>Click</button>
+  </>
+)
 }
-
-  
-
-export default App;
+export default App
