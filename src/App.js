@@ -8,7 +8,7 @@ class App extends React.Component{
   render(){
     return(
       <>
-
+        <h1>this is the extra used</h1>
         <h1>Counter:{this.state.counter}</h1>
         <button onClick={()=>{
           this.setState({
@@ -21,6 +21,7 @@ class App extends React.Component{
   }
 
 }
+
 
   
 
