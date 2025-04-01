@@ -1,16 +1,15 @@
 import React,{useState} from "react";
 
-let price = 3000;
 function App(){
-let [name, setName]=useState("iPhone");
+let [product, setProduct]=useState({name:"iphone",price:30000});
 return(
   <>
-    <h1>Moblie:{name}</h1>
-    <p>Price:{price}</p>
+    <h1>Moblie:{product.name}</h1>
+    <p>Price:{product.price}</p>
     <input id="text"/>
     <button onClick={()=>{
       let p = document.getElementById('text').value;
-      setName(p)
+      setProduct({name:product.name,price:p})
     }}>Click</button>
   </>
 )
