@@ -1,12 +1,17 @@
 import React,{useState} from "react";
 
-
+let price = 3000;
 function App(){
-let [count, setCount]=useState(0);
+let [name, setName]=useState("iPhone");
 return(
   <>
-    <h1>Count:{count}</h1>
-    <button onClick={()=>{setCount(++count)}}>Click</button>
+    <h1>Moblie:{name}</h1>
+    <p>Price:{price}</p>
+    <input id="text"/>
+    <button onClick={()=>{
+      let p = document.getElementById('text').value;
+      setName(p)
+    }}>Click</button>
   </>
 )
 }
