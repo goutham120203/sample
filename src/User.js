@@ -1,9 +1,9 @@
-function User({id,name,Age}){
+function User(props){
     return(
         <div>
-            <h3>Id: {id}</h3>
-            <h4>Name:{name}</h4>
-            <p>Age:{Age}</p>
+            <h3>Id: {props.id}</h3>
+            <h4>Name:{props.name}</h4>
+            <p>Age:{props.Age}</p>
         </div>
     )
 }
