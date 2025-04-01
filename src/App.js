@@ -1,17 +1,13 @@
-import React,{useState} from "react";
+import './App.css'
+import React from "react";
 
 function App(){
-let [product, setProduct]=useState({name:"iphone",price:30000});
 return(
-  <>
-    <h1>Moblie:{product.name}</h1>
-    <p>Price:{product.price}</p>
-    <input id="text"/>
-    <button onClick={()=>{
-      let p = document.getElementById('text').value;
-      setProduct({name:product.name,price:p})
-    }}>Click</button>
-  </>
+  <div className="Wrapper">
+    <h1>Change the backgroundColor</h1>
+    <input type="color" onChange={(e)=>{document.body.style.backgroundColor=e.target.value}}/><br></br>
+    
+  </div>
 )
 }
 export default App
