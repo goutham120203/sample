@@ -1,22 +1,17 @@
 import User from "./User";
 
 function App(){
+  let counter = 0;
 
-  const users = [{id:'21', name:'goutham', Age:'23'},
-    {id:'22', name:'ganesh', Age:'24'},
-    {id:'24', name:'sandeep', Age:'25'},
-    {id:'25', name:'manoj', Age:'23'}
-  ];
+  function updateCounter(){
+    ++counter;
+    console.log(counter)
+  }
   return(
-    <div>
-      {
-        [
-          users.map((user)=>{
-           return <User key={user.id}id={user.id} name={user.name} Age = {user.Age}/>
-          })
-        ]
-      }  
-    </div>
+    <>
+      <h1>Counter value : {counter}</h1>
+      <button onClick={updateCounter}>Change</button>
+    </>
   );
 }
 
