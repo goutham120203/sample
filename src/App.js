@@ -1,19 +1,40 @@
-import {useState,useEffect} from 'react'
 
-const App = ()=>{
-  const [count,setCount] = useState(0)
+import { useEffect, useState } from "react"
+import ProductGrid from "./ProductGrid"
+
+import './App.css'
 
 
-useEffect(()=>{
-  console.log(`render every time:${count}`);
-},[count])
+function App(){
+  const [products,setProducts]=useState([])
 
-return(
-  <>
-  <h1>Count:{count}</h1>
-  <button onClick={()=>{setCount(count+1)}}>button</button>
-  </>
-)
+  useEffect(
+    ()=>{
+      getProducts()
+    }
+  )
+
+  async function getProducts(){
+    let res = await fetch("https://fakestoreapi.com/products");
+     let productList= await res.json()
+
+     setProducts(productList);
+
+
+  }
+
+  if(products.length==0){
+    return (<h1>Fetching the Data...</h1>)
+  }
+    return (
+      <>
+       <div className="product-list">
+
+        {products.map((p)=><ProductGrid {...p} key={p.id}></ProductGrid>)}
+
+       </div>
+      </>
+    )
 }
 
 export default App

@@ -1,6 +1,6 @@
 function User(props){
     return(
-        <div>
+        <div className="card">
             <h3>Id: {props.id}</h3>
             <h4>Name:{props.name}</h4>
             <p>Age:{props.Age}</p>
