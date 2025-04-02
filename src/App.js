@@ -1,19 +1,21 @@
-import React,{useState} from "react"
+import {useState} from 'react'
 
-function App(){
-  let [num, setNum]=useState(100)
+const LoggedIn = () =><h1>welcome,user</h1>
+const LoggedOut = () =><h1>Please login</h1>
+
+const App = ()=>{
+ const [isLoggedin,setIsLoggedIn] = useState(false)
   return(
-    <>
-      <h1>{num}</h1>
-      <button onClick={
-        ()=>{setNum(200)}
-      }>btn</button><br></br>
-      <input type="text" onChange={(e)=>{
-        let tem=e.target.value
-        setNum(tem)
-        }}/>
-    </>
+    <div>
+      {isLoggedin?<LoggedIn/>:<LoggedOut/>}
+      <button onClick={()=>{setIsLoggedIn(!isLoggedin)}}>{isLoggedin?<p>logout</p>:<p>login</p>}</button>
+    </div>
   )
 }
 
-export default App
+
+
+
+
+
+export default App;
