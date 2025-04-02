@@ -1,25 +1,19 @@
-import './App.css'
-import React,{ useState } from 'react';
-
-let stock = 10;
+import React,{useState} from "react"
 
 function App(){
-  let [count, setCount] = useState(0);
-return(
-  <div className="Wrapper">
-    <button disabled={count === 0}onClick={()=>{
-      if(count>0){
-            setCount(count -1)
-      }
-    }}>-</button>
-    <p>{count}</p>
-    <button disabled={count===10} onClick={()=>{
-      if(count<stock){
-        setCount(count+1)
-      }
-    }}>+</button>
-    
-  </div>
-)
+  let [num, setNum]=useState(100)
+  return(
+    <>
+      <h1>{num}</h1>
+      <button onClick={
+        ()=>{setNum(200)}
+      }>btn</button><br></br>
+      <input type="text" onChange={(e)=>{
+        let tem=e.target.value
+        setNum(tem)
+        }}/>
+    </>
+  )
 }
+
 export default App
