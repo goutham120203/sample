@@ -1,21 +1,19 @@
-import {useState} from 'react'
-
-const LoggedIn = () =><h1>welcome,user</h1>
-const LoggedOut = () =><h1>Please login</h1>
+import {useState,useEffect} from 'react'
 
 const App = ()=>{
- const [isLoggedin,setIsLoggedIn] = useState(false)
-  return(
-    <div>
-      {isLoggedin?<LoggedIn/>:<LoggedOut/>}
-      <button onClick={()=>{setIsLoggedIn(!isLoggedin)}}>{isLoggedin?<p>logout</p>:<p>login</p>}</button>
-    </div>
-  )
+  const [count,setCount] = useState(0)
+
+
+useEffect(()=>{
+  console.log(`render every time:${count}`);
+},[count])
+
+return(
+  <>
+  <h1>Count:{count}</h1>
+  <button onClick={()=>{setCount(count+1)}}>button</button>
+  </>
+)
 }
 
-
-
-
-
-
-export default App;
+export default App
