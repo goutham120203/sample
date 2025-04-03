@@ -1,40 +1,22 @@
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
-import { useEffect, useState } from "react"
-import ProductGrid from "./ProductGrid"
-
-import './App.css'
+const Home = () =><h1>Home Page</h1>
+const About = () =><h1>About Page</h1>
 
 
 function App(){
-  const [products,setProducts]=useState([])
-
-  useEffect(
-    ()=>{
-      getProducts()
-    }
+  return(
+    <BrowserRouter>
+      <nav>
+        <Link to="/">Home</Link> | <Link to="/about">About</Link>
+        
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/about" element={<About/>}/>
+      </Routes>
+    </BrowserRouter>
   )
-
-  async function getProducts(){
-    let res = await fetch("https://fakestoreapi.com/products");
-     let productList= await res.json()
-
-     setProducts(productList);
-
-
-  }
-
-  if(products.length==0){
-    return (<h1>Fetching the Data...</h1>)
-  }
-    return (
-      <>
-       <div className="product-list">
-
-        {products.map((p)=><ProductGrid {...p} key={p.id}></ProductGrid>)}
-
-       </div>
-      </>
-    )
 }
 
 export default App
