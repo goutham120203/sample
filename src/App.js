@@ -1,21 +1,13 @@
-import { BrowserRouter, Link, useParams,Routes,Route } from "react-router-dom";
-
-const UserProfile = ()=>{
-  const {id} = useParams();
-  return <h1>user Profile:{id}</h1>
-}
+import { useRef } from "react";
 
 function App(){
-    return(
-      <BrowserRouter>
-        <nav>
-          <Link to="/user/1" >User 1</Link> | <Link to="/user/2">User 2</Link>
-        </nav>
-          <Routes>
-            <Route path="/user/:id" element={<UserProfile/>}/>
-          </Routes>
-      </BrowserRouter>
-    )
+  const myref = useRef(null);
+   let change = () =>{
+    myref.current.innerHTML="bye"
+   }
+  console.log(myref)
+  return <div ref={myref} onClick={change}>Hello</div>
 }
+
 
 export default App
