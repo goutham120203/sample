@@ -1,7 +1,7 @@
-import {useState} from 'react';
+import {createContext, useState} from 'react';
 import Parent from './Parent';
 
-
+export const context = createContext()
  
 function App() {
 
@@ -17,8 +17,9 @@ function App() {
       setMessage("any help")
     }}>Click Me 
     </button>
-
-    <Parent message={message} /> 
+  <context.Provider value={message}>
+     <Parent /> 
+  </context.Provider>
     
    </div>
   )
