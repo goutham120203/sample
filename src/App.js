@@ -1,17 +1,26 @@
 import {useState} from 'react';
-import useCounter from './useCounter';
+import Parent from './Parent';
+
+
  
 function App() {
 
-  const {count, increment, decrement, reset} = useCounter(10);
+  const [message,setMessage] = useState("I am from the App component")
+
+  console.log(message)
 
   return (
-    <div className="App">
-      <h1>Count: {count}</h1>
-      <button onClick={increment}>Increment</button>
-      <button onClick={decrement}>Decrement</button>
-      <button onClick={reset}>Reset</button>
-    </div>
+   <div>
+    <h1>props Drilling Expample</h1>
+
+    <button onClick={()=>{
+      setMessage("any help")
+    }}>Click Me 
+    </button>
+
+    <Parent message={message} /> 
+    
+   </div>
   )
 
 
