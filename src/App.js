@@ -1,28 +1,45 @@
-import {createContext, useState} from 'react';
-import Parent from './Parent';
+import axios from "axios";
+import { useEffect,useState } from "react"
 
-export const context = createContext()
  
 function App() {
 
-  const [message,setMessage] = useState("I am from the App component")
+    const [users,setUsers] = useState([]);
+    const [loading,setLoading] = useState(true);
+    const [error,setError] = useState('');
 
-  console.log(message)
 
-  return (
-   <div>
-    <h1>props Drilling Expample</h1>
+    const fetchUsers = async () => {
+        try {
+          const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+          setUsers(response.data);
+          setLoading(false);
+        } catch (err) {
+          setError('Failed to fetch users');
+          setLoading(false);
+        }
+      };
 
-    <button onClick={()=>{
-      setMessage("any help")
-    }}>Click Me 
-    </button>
-  <context.Provider value={message}>
-     <Parent /> 
-  </context.Provider>
-    
-   </div>
-  )
+
+    useEffect(()=>{
+        fetchUsers()
+    },[]);
+
+
+    if(loading) return <p>Loading...</p>
+    if(error) return <p>{error}</p>
+
+    return(
+        <div>
+            <h2>User List</h2>
+            <ul>
+                {users.map((u)=>(
+                    <li style={{color:"blue"}} key={u.id}>{u.name}</li>
+                ))}
+            </ul>
+        </div>
+    )
+  
 
 
 }
